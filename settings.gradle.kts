@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
+
 rootProject.name = "Cuadros21100401EF202401"
 include(":app")
- 

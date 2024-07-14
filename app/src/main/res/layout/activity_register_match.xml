@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterMatchActivity">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registro de Enfrentamientos"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerLocalTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:prompt="@string/equipo_local" />
+
+    <Spinner
+        android:id="@+id/spinnerVisitorTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:prompt="@string/equipo_visitante" />
+
+    <EditText
+        android:id="@+id/editTextLocalOdds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Local (L)"
+        android:inputType="numberDecimal"
+        android:layout_margin="8dp" />
+
+    <EditText
+        android:id="@+id/editTextDrawOdds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Empate (X)"
+        android:inputType="numberDecimal"
+        android:layout_margin="8dp" />
+
+    <EditText
+        android:id="@+id/editTextVisitorOdds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Visitante (V)"
+        android:inputType="numberDecimal"
+        android:layout_margin="8dp" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        android:layout_margin="8dp" />
+</LinearLayout>

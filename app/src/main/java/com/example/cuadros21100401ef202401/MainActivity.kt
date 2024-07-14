@@ -1,47 +1,68 @@
 package com.example.cuadros21100401ef202401
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.cuadros21100401ef202401.ui.theme.Cuadros21100401EF202401Theme
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var editTextTeamName: EditText
+    private lateinit var editTextTeamURL: EditText
+    private lateinit var buttonSave: Button
+    private lateinit var buttonRegisterMatches: Button
+    private lateinit var buttonListMatches: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Cuadros21100401EF202401Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        setContentView(R.layout.activity_main)
+
+        editTextTeamName = findViewById(R.id.editTextTeamName)
+        editTextTeamURL = findViewById(R.id.editTextTeamURL)
+        buttonSave = findViewById(R.id.buttonSave)
+        buttonRegisterMatches = findViewById(R.id.buttonRegisterMatches)
+        buttonListMatches = findViewById(R.id.buttonListMatches)
+
+        val db = Firebase.firestore
+
+        buttonSave.setOnClickListener {
+            val teamName = editTextTeamName.text.toString()
+            val teamURL = editTextTeamURL.text.toString()
+
+            if (teamName.isNotEmpty() && teamURL.isNotEmpty()) {
+                val team = hashMapOf(
+                    "name" to teamName,
+                    "url" to teamURL
+                )
+
+                db.collection("teams")
+                    .add(team)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Equipo registrado con éxito", Toast.LENGTH_SHORT).show()
+                        editTextTeamName.text.clear()
+                        editTextTeamURL.text.clear()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Error al registrar el equipo", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        buttonRegisterMatches.setOnClickListener {
+            val intent = Intent(this, RegisterMatchActivity::class.java)
+            startActivity(intent)
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Cuadros21100401EF202401Theme {
-        Greeting("Android")
+        buttonListMatches.setOnClickListener {
+            val intent = Intent(this, ListMatchesActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

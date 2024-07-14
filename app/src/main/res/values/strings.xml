@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cuadros21100401EF202401</string>
+    <string name="equipo_local_prompt">Equipo Local</string>
+    <string name="equipo_visitante_prompt">Equipo Visitante</string>
 </resources>

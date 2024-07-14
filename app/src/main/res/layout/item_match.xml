@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/localTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Local Team" />
+
+    <TextView
+        android:id="@+id/visitorTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visitor Team" />
+
+    <TextView
+        android:id="@+id/localOdds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="L" />
+
+    <TextView
+        android:id="@+id/drawOdds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X" />
+
+    <TextView
+        android:id="@+id/visitorOdds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="V" />
+</LinearLayout>
